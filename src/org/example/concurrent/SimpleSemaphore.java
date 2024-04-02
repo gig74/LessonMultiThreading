@@ -4,8 +4,8 @@ import java.util.concurrent.Semaphore;
 
 //Mutual exclusion
 public class SimpleSemaphore {
-    public static void main(String[] args) {
-        final Semaphore smp = new Semaphore(4);
+    public static void main(String[] args) throws InterruptedException {
+        final Semaphore smp = new Semaphore(4, true);
         Runnable limitedCall =
                 new Runnable() {
                     int count = 0;
@@ -18,7 +18,7 @@ public class SimpleSemaphore {
                             // ждет пока не появится место
                             System.out.println("Поток #" + num + " начинает выполнять очень долгое действие "
                                     + time + " сек.");
-                            Thread.sleep(time * 10); // делаем вид, что поток выполняет важную задачу
+                            Thread.sleep(time * 300); // делаем вид, что поток выполняет важную задачу
                             System.out.println("Поток #" + num + " завершил работу!");
                             smp.release(); // освобождаем семафор, чтобы другой поток мог его занять
                         } catch (InterruptedException intEx) {
@@ -26,7 +26,9 @@ public class SimpleSemaphore {
                         }
                     }
                 };
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++) {
+            Thread.sleep(5);
             new Thread(limitedCall).start(); // пытаемся запустить одновременно 10 потоков
+        }
     }
 }
