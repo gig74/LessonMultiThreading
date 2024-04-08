@@ -32,7 +32,7 @@ public class Parking {
                     if (!PARKING_PLACES[i]) {
                         PARKING_PLACES[i] = true; // Занимаем место
                         currentPlace = i; // Запоминаем парковочное место
-                        System.out.println("Авто #" + carNumber + " запарковался на место "
+                        System.out.println("Авто  #" + carNumber + " запарковался на место "
                                 + currentPlace + " .");
                         break; // Завершаем цикл
                     }
@@ -52,7 +52,7 @@ public class Parking {
                 PARKING_PLACES[currentPlace] = false; // Освобождаем занятое место
             }
             numberOfParkingLots.release(); // освобождаем семафор
-            System.out.println("Авто #" + carNumber + " освободил место "
+            System.out.println("Авто  #" + carNumber + " освободил место "
                     + currentPlace + " .");
         }
     }
