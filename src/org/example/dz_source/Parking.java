@@ -51,9 +51,9 @@ public class Parking {
             synchronized (PARKING_PLACES) { // Чтоб в разных потоках массив асинхронно не менялся
                 PARKING_PLACES[currentPlace] = false; // Освобождаем занятое место
             }
-            numberOfParkingLots.release(); // освобождаем семафор
             System.out.println("Авто #" + carNumber + " освободил место "
                     + currentPlace + " .");
+            numberOfParkingLots.release(); // освобождаем семафор
         }
     }
 }
