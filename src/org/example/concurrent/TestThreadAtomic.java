@@ -1,7 +1,6 @@
 package org.example.concurrent;
 
 import java.util.concurrent.atomic.AtomicInteger;
-
 /**
  * Класс java.util.concurrent.atomic.AtomicInteger предоставляет операции с базовым значением int,
  * которые могут быть прочитаны и записаны атомарно,
